@@ -1,0 +1,8 @@
+# ignore all zipped backups
+secrestfull*.zip
+
+# ignore database settings file, example is 
+lib/config.ini
+
+# ignore bak files in sql folder
+sql/*.bak

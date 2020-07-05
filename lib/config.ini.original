@@ -1,0 +1,25 @@
+###### config.ini ######
+db_driver=mysql
+db_user=your database user
+db_password=your database user password
+
+[dsn]
+host=your host where mysql is running usually localhost
+port=your port usualy 3306
+dbname=your database name
+charset='utf8mb4'
+
+[db_options]
+# PDO::MYSQL_ATTR_INIT_COMMAND=set names utf8
+PDO::ATTR_ERRMODE=PDO::ERRMODE_EXCEPTION
+PDO::ATTR_DEFAULT_FETCH_MODE=PDO::FETCH_OBJ
+# PDO::FETCH_NUM returns enumerated array
+# PDO::FETCH_ASSOC returns associative array
+# PDO::FETCH_BOTH - both of the above
+# PDO::FETCH_OBJ returns object
+# PDO::FETCH_LAZY allows all three 
+PDO::ATTR_EMULATE_PREPARES=false
+
+[db_attributes]
+ATTR_ERRMODE=ERRMODE_EXCEPTION
+############
