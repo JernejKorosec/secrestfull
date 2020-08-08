@@ -26,7 +26,7 @@ $stmt=Database::prepare( "SELECT operating_system FROM secrestfull.supported;" )
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 $objekt1 = $result[0];
-//var_dump($objekt1);
+// var_dump($objekt1);
 // var_dump($stmt->fetchAll());
 echo $objekt1->operating_system;
 $stmt->closeCursor();
