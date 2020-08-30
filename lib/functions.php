@@ -39,7 +39,7 @@ class settings{
         $this->rem_arr_value(".");
         $this->rem_arr_value("..");
         $this->fileArray  = array_values($this->fileArray);
-        chdir("..");
+        //chdir("..");
         return $this;
     }
 
