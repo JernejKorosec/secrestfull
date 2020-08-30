@@ -6,3 +6,6 @@ lib/config.ini
 
 # ignore bak files in sql folder
 sql/*.bak
+
+# ignore data files
+data/*.zip
