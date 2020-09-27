@@ -9,3 +9,6 @@ sql/*.bak
 
 # ignore data files
 data/*.zip
+
+#ignore visula studio settings
+.vscode
