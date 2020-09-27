@@ -4,15 +4,11 @@ require('lib/dal.php');
 require('lib/functions.php');
 require('lib/webparser.php');
 
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-
+// header("Access-Control-Allow-Origin: *");
+// header("Content-Type: application/json; charset=UTF-8");
 
 $s = new settings();
 $s->set_zip_dir('data')->getDirFiles()->returnFileArr();
-
-
-
 
 //Smo v data direktoriju
 if (count($s->fileArray) > 0){
@@ -38,6 +34,8 @@ if (count($s->fileArray) > 0){
         zip_close($zip);
     };
 };
-echo $parsedUrl;
+//echo $parsedUrl;
+
+
 
 ?>
