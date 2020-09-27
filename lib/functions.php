@@ -33,13 +33,37 @@ class settings{
     function set_zip_dir($zipDir)
     {
         $this->currentPath = getcwd();
-        chdir($zipDir);
-        $this->workingPath = getcwd();
-        $this->fileArray = scandir($this->workingPath);
-        $this->rem_arr_value(".");
-        $this->rem_arr_value("..");
-        $this->fileArray  = array_values($this->fileArray);
-        //chdir("..");
+        //echo $this->currentPath = getcwd();
+        //echo $zipDir;
+
+        if(is_dir($zipDir))
+        {
+            echo "Direktorij obstaja"."\n";
+            
+        }else{
+            echo "Direktorij ne obstaja"."\n";
+            //mkdir("/path/to/my/dir", 0700);
+            $oldmask = umask(0);
+            //mkdir("test", 0777);
+            
+            if(mkdir($zipDir, 0777)){
+                umask($oldmask);
+                echo "Direktorij skreiran"."\n";
+                chdir($zipDir);
+                $this->workingPath = getcwd();
+                $this->fileArray = scandir($this->workingPath);
+                $this->rem_arr_value(".");
+                $this->rem_arr_value("..");
+                $this->fileArray  = array_values($this->fileArray);
+                //chdir("..");
+            }
+            else{
+                echo "Nimam pravic za ustvarjanje direktorija"."\n";
+            }
+            
+            
+        }
+        
         return $this;
     }
 
