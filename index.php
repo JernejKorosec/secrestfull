@@ -2,6 +2,7 @@
 require('lib/database.php');
 require('lib/dal.php');
 require('lib/functions.php');
+require('lib/webparser.php');
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -37,5 +38,6 @@ if (count($s->fileArray) > 0){
         zip_close($zip);
     };
 };
+echo $parsedUrl;
 
 ?>
