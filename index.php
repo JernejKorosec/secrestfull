@@ -9,19 +9,29 @@ require('lib/webparser.php');
 
 $s = new settings();
 /* set working dir to data -> get files in that directory -> return those files as array */
+
+
 $s->set_zip_dir('data')->getDirFiles()->returnFileArr();
 //Smo v data direktoriju
+
+
 if (count($s->fileArray) > 0){
     echo $extension = ".zip";
     echo $br = "<br/>";
+
+
+    // REMOVES non zip files
     foreach ($s->fileArray as $key => $value) {
-        $lowerValue = strtolower($s->fileArray[$key]);
-        $pos = strpos($lowerValue, $extension);
-        $is_zip_ext = ($pos > -1) ? 1 : 0;
-        if ($is_zip_ext===0) {
-            unset($s->fileArray[$key]);
+        $lowerValue = strtolower($s->fileArray[$key]);  // spremeni zapis datoteke v lower case
+        $pos = strpos($lowerValue, $extension);         // pogleda na kateri poziciji v lowercase zapisu datoteke je .zip
+        $is_zip_ext = ($pos > -1) ? 1 : 0;              // preveri če sploh obstaja .zip v datoteki
+        if ($is_zip_ext===0) {                          // če ne obstaja .zip v imenu datoteke 
+            unset($s->fileArray[$key]);                     // odstrani zapis datoteke iz arraya vseh datotek
         };
     }
+
+
+    // Odpre datoteko in teoretično vse datoteke v njej
     foreach ($s->fileArray as $key => $file) {
         echo $file;
         echo " Contains ";
