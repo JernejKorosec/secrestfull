@@ -99,6 +99,8 @@ function printDirContents($array){
 
 function printSpecificExt($path,$ext){
 
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
 }
 
 
