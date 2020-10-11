@@ -78,7 +78,6 @@ echo "!<br/>";
 
 function getDirContents($dir, &$results = array()) {
     $files = scandir($dir);
-
     foreach ($files as $key => $value) {
         $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
         if (!is_dir($path)) {
@@ -88,26 +87,20 @@ function getDirContents($dir, &$results = array()) {
             $results[] = $path;
         }
     }
-
     return $results;
 }
 
 function printDirContents($array){
-    /*
-    foreach ($array as $i => $item) {
-        echo $item[$i];
-    }
-    echo "<PRE>";
-    var_dump($array);
-    echo "</PRE>";    
-    */
-    //echo $array[0];
-
     foreach ($array as $item) {
         echo $item;
         echo "<br/>";
     }
 }
+
+function printSpecificExt($path,$ext){
+
+}
+
 
 $array = getDirContents($dir);
 printDirContents($array);
