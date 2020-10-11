@@ -7,10 +7,10 @@ require('lib/webparser.php');
 // header("Access-Control-Allow-Origin: *");
 // header("Content-Type: application/json; charset=UTF-8");
 
-$s = new settings();
+//$s = new settings();
 /* set working dir to data -> get files in that directory -> return those files as array */
 
-
+/*
 $s->set_zip_dir('data')->getDirFiles()->returnFileArr();
 //Smo v data direktoriju
 
@@ -55,5 +55,53 @@ if (count($s->fileArray) > 0){
         };
     };
 };
+*/
+
+
+
+// Gremo po vrsti
+
+// Delaj dokler v arrayu ni več zipov oziroma zapišeš vse datoteke
+$dir = $starting_dr = getcwd();
+
+
+echo $dir1 = getcwd();
+echo "<br/>";
+/*
+$depth1 = 0;
+rPrint($dir1,$depth1);
+echo "=============================<br/>";
+echo spaces(10);
+echo "!<br/>";
+*/
+
+
+function getDirContents($dir, &$results = array()) {
+    $files = scandir($dir);
+
+    foreach ($files as $key => $value) {
+        $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+        if (!is_dir($path)) {
+            $results[] = $path;
+        } else if ($value != "." && $value != "..") {
+            getDirContents($path, $results);
+            $results[] = $path;
+        }
+    }
+
+    return $results;
+}
+
+//$result = getDirContents($dir);
+$array = getDirContents($dir);
+
+foreach ($array as $i => $item) {
+    echo $item[$i];
+}
+
+echo "<PRE>";
+var_dump($array);
+echo "</PRE>";
+
 
 ?>

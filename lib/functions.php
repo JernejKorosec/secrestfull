@@ -76,6 +76,91 @@ class settings{
 
 }
 
+/*
+$zip = new ZipArchive();
+$res = $zip->open('test.zip', ZipArchive::CHECKCONS);
+function rPrint($cDir) // current Directory
+{
+    if(is_dir()){
+        echo "[$cDir]";
+        rPrint($cDir);
+    } else if(is_file($cDir)){
+        echo "[$cDir]";
+        rPrint($cDir);
+    };// else if()
+}
+*/
+
+function spaces($num){
+    /*
+    for ($i=0; $i < $num; $i++) { 
+     $str = $str . "-";
+     
+    }
+    */
+    $str  = str_repeat("=", $num);
+    return $str;
+}
+
+function rPrint($dir,$depth){
+//if($depth>4) return null;
+//echo $dir;
+//echo "<br/>";
+
+    if (is_dir($dir)) {
+        //echo "isdir<br/>";
+        
+        if ($dh = opendir($dir)) 
+        {// dh = directory handle
+
+            //$dh
+            while (($file = readdir($dh)) !== false) {
+                
+                if ($file != "." && $file != "..") 
+                {
+                    //echo $depth;
+                    $space = spaces($depth);
+                    //echo $space.$file;
+                    //echo $space.$dir.$file;
+                    //echo  "\n<br/>";
+                    //echo $dir;
+                    echo $file_name = $dir . DIRECTORY_SEPARATOR . $file; // En direktorij premalo gre dol rekurzija
+                    $file_type = filetype($file_name);
+                    //echo "[$file_type]  " . "filename: $file_name";
+                    //echo $space.$file_name;
+                    echo  "\n<br/>";
+                    if(is_file($file_name))
+                    {
+                        //echo "  Je datoteka!";
+                    }
+                    else if(is_dir($file_name)) 
+                    {
+                        //echo "  Je mapa!";
+                        //$dir = $file_name; //PAZI !!!! TOLE POPRAV
+                        $depth++;
+                        rPrint($dir,$depth);
+                    }
+                    
+                }
+                /*
+                else{
+                    echo "test izpise . ali . in ..<br/>";
+                }
+                */
+            }
+            closedir($dh);
+        }
+    }
+    
+    else if(is_file($dir))
+    {
+        echo $dir;
+
+    }
+    
+
+}
+
 
 
 ?>
