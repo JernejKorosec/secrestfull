@@ -92,16 +92,25 @@ function getDirContents($dir, &$results = array()) {
     return $results;
 }
 
-//$result = getDirContents($dir);
-$array = getDirContents($dir);
+function printDirContents($array){
+    /*
+    foreach ($array as $i => $item) {
+        echo $item[$i];
+    }
+    echo "<PRE>";
+    var_dump($array);
+    echo "</PRE>";    
+    */
+    //echo $array[0];
 
-foreach ($array as $i => $item) {
-    echo $item[$i];
+    foreach ($array as $item) {
+        echo $item;
+        echo "<br/>";
+    }
 }
 
-echo "<PRE>";
-var_dump($array);
-echo "</PRE>";
+$array = getDirContents($dir);
+printDirContents($array);
 
 
 ?>
