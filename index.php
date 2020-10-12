@@ -99,22 +99,29 @@ function printDirContents($array){
     }
 }
 
-function printSpecificExt($results = array(),$ext){
+function getSpecificExt($results = array(),$ext){
+    
+    $extension_filtered_array = array();
     foreach ($results as $filename) {
-        //$path_parts = pathinfo($filename); //returns array
+        //$path_parts = pathinfo($filename); //returns array of file name properties
         $file_ext = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
         $ext = strtolower($ext);
         if($file_ext === $ext)
         {
-            echo $filename;
-            echo "<br/>";
+            array_push($extension_filtered_array,$filename);
+            //echo $filename;
+            //echo "<br/>";
         }
     }
+    return $extension_filtered_array;
 }
 
 $array = getDirContents($dir);
-
 //printDirContents($array);
 // Iz direktorija pobere vse zipe
-printSpecificExt($array,"zip");
+$zips = getSpecificExt($array,"zip");
+var_dump($zips);
+
+
+
 ?>
