@@ -65,8 +65,9 @@ if (count($s->fileArray) > 0){
 $dir = $starting_dr = getcwd();
 
 
-echo $dir1 = getcwd();
-echo "<br/>";
+//echo $dir1 = getcwd();
+$dir1 = getcwd();
+//echo "<br/>";
 /*
 $depth1 = 0;
 rPrint($dir1,$depth1);
@@ -90,6 +91,7 @@ function getDirContents($dir, &$results = array()) {
     return $results;
 }
 
+
 function printDirContents($array){
     foreach ($array as $item) {
         echo $item;
@@ -97,15 +99,22 @@ function printDirContents($array){
     }
 }
 
-function printSpecificExt($path,$ext){
-
-    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-
+function printSpecificExt($results = array(),$ext){
+    foreach ($results as $filename) {
+        //$path_parts = pathinfo($filename); //returns array
+        $file_ext = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
+        $ext = strtolower($ext);
+        if($file_ext === $ext)
+        {
+            echo $filename;
+            echo "<br/>";
+        }
+    }
 }
 
-
 $array = getDirContents($dir);
-printDirContents($array);
 
-
+//printDirContents($array);
+// Iz direktorija pobere vse zipe
+printSpecificExt($array,"zip");
 ?>
