@@ -66,7 +66,7 @@ $dir = $starting_dr = getcwd();
 
 
 //echo $dir1 = getcwd();
-$dir1 = getcwd();
+//$dir1 = getcwd();
 //echo "<br/>";
 /*
 $depth1 = 0;
@@ -116,11 +116,74 @@ function getSpecificExt($results = array(),$ext){
     return $extension_filtered_array;
 }
 
+function extractProper($Zip_path,$currDir){
+    umask(0);
+    $zip = new ZipArchive;
+    if ($zip->open($Zip_path) === TRUE) {
+    //if ($zip->open($zips[0]) === TRUE) {
+        //var_dump($zip);
+        /*
+        echo $zip->filename;
+        echo "<br/>";
+        echo "vsebuje:";
+        */
+        $dir_postfix = time();
+        $stat = $zip->statIndex( $i ); 
+        $bn = "_";
+        $bn .= basename( $stat['name'] );
+
+        $currDir .= "/".$dir_postfix."/";
+        //echo $currDir;
+        /*
+        print_r( $bn  . PHP_EOL ); 
+        echo "<br/>";
+        */
+        //$zip->extractTo('/my/destination/dir/');
+        $zip->extractTo($currDir);
+        $zip->close();
+        //echo 'ok';
+    } else {
+        echo 'failed';
+    }
+}
+
+//echo $dir;
 $array = getDirContents($dir);
+//printDirContents($array);
 //printDirContents($array);
 // Iz direktorija pobere vse zipe
 $zips = getSpecificExt($array,"zip");
+/*
+echo "<PRE>";
 var_dump($zips);
+echo "</PRE>";
+*/
+
+$timestampString = date("Y_d_m_H_i_s");
+$currDir = getcwd();
+$currDir.="/";
+$currDir.="/unzipped/$timestampString";
+//echo $currDir;
+
+
+
+
+foreach ($zips as $item) {
+    if(stripos($item,'RPE'))
+    {
+        extractProper($item,$currDir);
+        echo "Found:";
+        echo $item;
+        echo "<br/>";
+    }
+    else
+    {
+        echo "Other Directory:";
+        echo $item;
+        echo "<br/>";
+
+    }
+}
 
 
 

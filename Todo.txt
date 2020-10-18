@@ -1,0 +1,5 @@
+Torej
+
+Rabimo sneti odzipati in insertirati v bazo
+po skrajšanem postopku.
+
