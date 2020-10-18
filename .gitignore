@@ -10,5 +10,8 @@ sql/*.bak
 # ignore data files
 data/*.zip
 
-#ignore visula studio settings
+#ignore visual studio settings
 .vscode
+
+# ignore unzipped folder
+unzipped
