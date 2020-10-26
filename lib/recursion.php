@@ -33,6 +33,13 @@ function traverse($starting_point, $global_array)
 
 }
 
+// Direktorij kjer se nahajajo originalne zip datoteke
+$starting_dir = "";
+
+// Direktorij Kjer se shranjujejo vse ostale datoteke
+// v temp zipi in podzipi v root tega direktorija
+// pa tisti dbf katere potrebujem
+$unzip_dir = "";
 
 
 ?>

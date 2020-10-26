@@ -89,17 +89,88 @@ echo "===================================== EXECUTION ENDED ====================
 */
 
 echo "<br/>===================================== EXECUTION ENDED ====================================<br/>";
-echo "The factorial of 5 is: " . factorial( 5 );
-echo "<br/>===================================== EXECUTION ENDED ====================================<br/>";
-$starting_point=0;
-traverse($starting_point, $global_array);
-echo "<br/>===================================== EXECUTION ENDED ====================================<br/>";
+//echo "The factorial of 5 is: " . factorial( 5 );
+//echo "<br/>===================================== EXECUTION ENDED ====================================<br/>";
+//$starting_point=0;
+//traverse($starting_point, $global_array);
+//echo "<br/>===================================== EXECUTION ENDED ====================================<br/>";
 
 
 
 
+/*
+echo $dir;
+echo "<br/>";
+echo $starting_dr;
+echo "<br/>";
+echo getcwd();
+*/
 
 
+
+//echo $starting_dr;
+//$files1 = scandir($starting_dr);
+//$scanned_directory = array_diff(scandir($starting_dr), array('..', '.'));
+
+
+//vd($files1);
+
+function isZip($path){
+
+}
+
+function isDir($path){
+    return is_dir($path);
+}
+
+function isFile(){
+
+}
+
+
+function rec($starting_dr){
+    $files1 = array_diff(scandir($starting_dr), array('..', '.'));
+
+    foreach ($files1 as &$value) {
+        $polna_pot = realpath($starting_dr . DIRECTORY_SEPARATOR . $value);
+
+        if(!is_dir($polna_pot)) 
+        {
+            
+            // IF IS ZIP
+            $file_ext = strtolower(pathinfo($value,PATHINFO_EXTENSION));
+            $ext = strtolower("ZiP");
+            if($file_ext === $ext)
+            {
+                echo '<span style="color:green">';
+                echo " ZIP___:";
+            }
+            else
+            {
+                echo '<span style="color:blue">';
+                echo " FILE__:";
+            }
+            
+            echo $polna_pot;
+            echo '</span>';
+            echo "<br/>"; // Izpiše kar je treba
+        }
+        else
+        {
+            echo '<span style="color:red">';
+            echo " DIR___:";
+            echo $polna_pot;
+            echo '</span>';
+            echo "<br/>"; 
+
+            rec($polna_pot);
+            
+        }
+        
+    }
+}
+
+rec($starting_dr);
 
 
 
