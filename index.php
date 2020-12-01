@@ -1,7 +1,7 @@
 <?php
 require('lib/database.php');
 require('lib/dal.php');
-require('lib/functions.php');
+require('lib/functions2.php');
 require('lib/webparser.php');
 require('lib/recursion.php');
 // Gremo po vrsti
