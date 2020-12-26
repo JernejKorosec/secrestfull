@@ -1,4 +1,5 @@
 <?php
+// test
 require('lib/database.php');
 require('lib/dal.php');
 require('lib/functions2.php');
